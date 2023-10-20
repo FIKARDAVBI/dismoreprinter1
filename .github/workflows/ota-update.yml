@@ -21,7 +21,7 @@ jobs:
         dashboard-login: ${{ secrets.HUSARNET_DASHBOARD_LOGIN }}
         dashboard-password: ${{ secrets.HUSARNET_DASHBOARD_PASSWORD }}
 
-    - name: Wait until my-esp32 host is available
+    - name: Wait until dismoreprinter1 host is available
       run: while ! grep -q "dismoreprinter1" /etc/hosts; do sleep 1; done
 
     - name: ESP32 software reset
