@@ -279,8 +279,6 @@ boolean reconnect() {
 void setup(void) {
   ota_init();
   sprintf(MQTT_CLIENTID, "%s", "node1");
-  Serial1.begin(9600);
-  Serial2.begin(9600);
   pinMode(12, OUTPUT);
   printer.begin();
   printer.setTimes(1500, 1500);
