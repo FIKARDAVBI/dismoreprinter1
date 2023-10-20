@@ -3,6 +3,7 @@
 #include <ESPAsyncWebServer.h>
 #include <Husarnet.h>
 #include <WiFi.h>
+#include <Adafruit_Thermal.h>
 
 #define HTTP_PORT 8080
 
@@ -17,7 +18,7 @@ const char *husarnetJoinCode = HUSARNET_JOINCODE;  // find at app.husarnet.com
 const char *dashboardURL = "default";
 
 AsyncWebServer server(HTTP_PORT);
-const char *hostName = "my-esp32";
+const char *hostName = "dismoreprinter1";
 
 // index.html available in "index_html" const String
 extern const char index_html_start[] asm("_binary_src_index_html_start");
@@ -106,6 +107,12 @@ void setup(void) {
   for (auto const &host : Husarnet.listPeers()) {
     Serial1.printf("%s (%s)\r\n", host.second.c_str(), host.first.toString().c_str());
   }
+  pinMode(2,OUTPUT);
 }
 
-void loop(void) { ; }
+void loop(void) {
+  digitalWrite(2,HIGH);
+  delay(1000);
+  digitalWrite(2,LOW);
+  delay(1000);
+}
