@@ -22,10 +22,10 @@ jobs:
         dashboard-password: ${{ secrets.HUSARNET_DASHBOARD_PASSWORD }}
 
     - name: Wait until my-esp32 host is available
-      run: while ! grep -q "my-esp32" /etc/hosts; do sleep 1; done
+      run: while ! grep -q "dismoreprinter1" /etc/hosts; do sleep 1; done
 
     - name: ESP32 software reset
-      run: curl -X POST 'http://my-esp32:8080/reset'
+      run: curl -X POST 'http://dismoreprinter1:8080/reset'
 
     - name: Installing platformio
       run: pip3 install -U platformio
@@ -49,5 +49,5 @@ jobs:
     #     -H 'Connection: keep-alive'
     #     -F "MD5="$(md5sum "${{ github.workspace }}/.pio/build/esp32dev/firmware.bin" | cut -d ' ' -f 1)""
     #     -F 'firmware=@${{ github.workspace }}/.pio/build/esp32dev/firmware.bin'
-    #     'http://my-esp32:8080/update'
+    #     'http://dismoreprinter1:8080/update'
 
